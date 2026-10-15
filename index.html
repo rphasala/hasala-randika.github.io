@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Academic and Professional e-Portfolio - Biotechnology" />
+  <title>e-Portfolio | Hasala Randika</title>
+  
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary: #1e5631;
+      --primary-light: #4c9a2a;
+      --primary-subtle: #eef6ec;
+      --dark: #1f2937;
+      --text: #374151;
+      --text-muted: #6b7280;
+      --bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.25s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 48px;
+      height: 3px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* Hero / About Me */
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-img {
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid var(--primary-subtle);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .btn-group {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f3f4f6;
+    }
+
+    /* Cards & Grids */
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      background: var(--primary-subtle);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+    }
+
+    /* Skills List */
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-category h4 {
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-category ul {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .skill-category ul li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Contact Details */
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #ffffff;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">Hasala Randika</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- About Me -->
+    <section id="about">
+      <div class="hero-card">
+        <!-- Profile Picture: Picture1.jpg -->
+        <img src="Picture1.jpg" alt="Hasala Randika" class="profile-img" />
+        <div class="hero-content">
+          <h1>Hasala Randika</h1>
+          <p class="subtitle">Undergraduate | BSc (Hons) in Biotechnology</p>
+          <p>
+            Welcome to my e-Portfolio. I am an undergraduate student pursuing a BSc (Hons) in Biotechnology. Passionate about molecular biology, agricultural biotechnology, and bioinformatics, with a strong commitment to learning modern laboratory protocols and computational analytical tools.
+          </p>
+          <div class="btn-group">
+            <!-- Link to downloadable Practical 1 resume -->
+            <a href="resume.pdf" class="btn btn-primary" download>
+              <i data-lucide="file-down"></i> Download Resume (PDF)
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i data-lucide="mail"></i> Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Qualifications -->
+    <section id="education">
+      <h2 class="section-title">Educational Qualifications</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Higher Education</h3>
+          <p class="meta">BSc (Hons) in Biotechnology | Year 1</p>
+          <p>Currently studying foundational degree modules including Introduction to Information Technology (SC1172), General Chemistry, Cell Biology, and Laboratory Techniques.</p>
+          <div class="tag-cloud">
+            <span class="tag">Biotechnology Major</span>
+            <span class="tag">Undergraduate</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Secondary Education</h3>
+          <p class="meta">G.C.E. Advanced Level & Ordinary Level</p>
+          <p>Successfully completed secondary schooling in the Biological Science stream, establishing the foundational analytical and laboratory concepts essential for higher education.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="experience">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Laboratory Assistant / Academic Trainee</h3>
+          <p class="meta">Academic Practical Sessions</p>
+          <p>Gained hands-on experience in sterile laboratory practices, preparation of standard buffers, solutions, and microbiological media, alongside data documentation.</p>
+        </div>
+        <div class="card">
+          <h3>Peer Study Group Coordinator</h3>
+          <p class="meta">Student Community</p>
+          <p>Organized peer review sessions for bioscience course modules, assisting colleagues with laboratory report structures and IT assignment workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Professional Qualifications -->
+    <section id="qualifications">
+      <h2 class="section-title">Other Professional Qualifications & Certifications</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Information Technology & Web Basics</h3>
+          <p class="meta">Introductory IT Coursework</p>
+          <p>Trained in version control with Git, Markdown documentation, and responsive web publishing using HTML5 and GitHub Pages.</p>
+        </div>
+        <div class="card">
+          <h3>Laboratory Safety & Protocols</h3>
+          <p class="meta">Institutional Workshop</p>
+          <p>Certified in biosafety level practices, chemical waste disposal protocols, and emergency chemical management in laboratory environments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Related to Career -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Academic e-Portfolio Development</h3>
+          <p class="meta">SC1172 IT Project</p>
+          <p>Designed and hosted a responsive personal portfolio website utilizing HTML, CSS, Git, and GitHub Pages to showcase qualifications and coursework.</p>
+        </div>
+        <div class="card">
+          <h3>Microbial Culture Study</h3>
+          <p class="meta">Practical Investigation</p>
+          <p>Conducted isolation and aseptic culturing techniques to observe bacterial and fungal colony morphology under controlled lab parameters.</p>
+        </div>
+        <div class="card">
+          <h3>Bioinformatics Sequence Retrieval</h3>
+          <p class="meta">Self-Directed Learning</p>
+          <p>Explored basic NCBI BLAST and nucleotide database querying to analyze conserved genetic sequences in model organisms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills & Extracurriculars -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Hobbies</h2>
+      <div class="grid grid-3">
+        <div class="skill-category">
+          <h4><i data-lucide="flask-conical"></i> Laboratory Skills</h4>
+          <ul>
+            <li>Aseptic technique & media preparation</li>
+            <li>Light microscopy & slide preparation</li>
+            <li>Micropipetting & serial dilutions</li>
+            <li>Standard solution preparation</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4><i data-lucide="monitor"></i> Technical & IT Skills</h4>
+          <ul>
+            <li>HTML5, CSS3, & Markdown</li>
+            <li>Version control with Git & GitHub</li>
+            <li>Microsoft Excel, Word & PowerPoint</li>
+            <li>Basic data representation</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4><i data-lucide="heart"></i> Hobbies & Interests</h4>
+          <ul>
+            <li>Reading science journals & blogs</li>
+            <li>Graphic design & multimedia editing</li>
+            <li>Cricket & outdoor sports</li>
+            <li>Nature photography</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Details -->
+    <section id="contact">
+      <h2 class="section-title">Contact Details</h2>
+      <div class="contact-card">
+        <p>Feel free to reach out for academic discussions, inquiries, or collaborative projects.</p>
+        <div class="contact-links">
+          <a href="mailto:hasala.randika@example.com" class="contact-item">
+            <i data-lucide="mail"></i> hasala.randika@example.com
+          </a>
+          <a href="https://github.com" target="_blank" class="contact-item">
+            <i data-lucide="github"></i> GitHub Profile
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="contact-item">
+            <i data-lucide="linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Hasala Randika. Built with HTML5 and GitHub Pages.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
